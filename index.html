@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+</head>
+<body>
+    <div id="videoContainer"></div>
+    <script src="mithril.js"></script>
+    <script type="text/javascript" src="myth-player.js"> </script>
+    <script type="text/javascript">
+        (function(){
+
+            var player = mythPlayer("videoContainer");
+
+            player.setSources({
+                mp4: "http://media.w3.org/2010/05/sintel/trailer.mp4"
+            })
+            // api is not exposed yet
+            // player.api.play();
+
+        })();
+    </script>
+
+</body>
+</html>
