@@ -5,7 +5,13 @@ Myth player is a simple html5 video player depending on mythril.js.
 
 ### API
 
-Currently myth player supports a very small subset of html5 media element's api, consisting of play, pause and load. 
+The media element can be accessed via player.mediaElement directly. There's also api(methodName, argsArray, state) method which enables calling the media element's methods and setting custom state afterwards, such as: 
+
+```
+   player.api("load", null_or_undefined, "LOADED");
+   or 
+   player.api("load");
+```
 
 ### Usage
 
@@ -58,7 +64,7 @@ Example:
                      webm: "..."
                 })
             */
-            player.api.play();
+            player.api("play");
 
         })();
     </script>
