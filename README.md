@@ -5,7 +5,9 @@ Myth player is a simple html5 video player depending on mythril.js.
 
 ### API
 
-The media element can be accessed via player.mediaElement directly. There's also api(methodName, argsArray, state) method which enables calling the media element's methods and setting custom state afterwards, such as: 
+The media element can be accessed via *player.mediaElement* directly. 
+
+*api(methodName, argsArray, state)* method enables calling the media element's methods and setting custom state afterwards, such as: 
 
 ```
    player.api("load", null_or_undefined, "LOADED");
@@ -15,13 +17,11 @@ The media element can be accessed via player.mediaElement directly. There's also
 
 ### Usage
 
-A player instance is created like this: 
-
 ```
 var player = mythPlayer(containerID, configuration, mediasources);
 ```
 ##### containerID
-Simply the id of the container element. In a structure like the following, the container id would be "videoContainer":
+Simply the id of the container element. In the following tree, the container id would be "videoContainer":
 
 ```
    <div id="videoContainer">
@@ -64,7 +64,7 @@ Example:
                      webm: "..."
                 })
             */
-            player.api("play", "PLAYING");
+            player.api("play", null, "PLAYING");
 
         })();
     </script>
