@@ -152,20 +152,6 @@ var mythPlayer = function (selectorId, options, sources) {
             }
         };
 
-            //     play: function () {
-            //         mediaElement.play();
-            //         return self.vm.state("PLAY");
-            //     }
-            //     ,pause: function () {
-            //         mediaElement.pause();
-            //         return self.vm.state("PAUSE");
-            //     }
-            //     ,load: function () {
-            //         mediaElement.load();
-            //         return self.vm.state("LOAD");
-            //     }
-            // };
-
         self.setSources = function (sources) {
             m.startComputation();
             self.vm.sources(sources);
