@@ -64,7 +64,7 @@ Example:
                      webm: "..."
                 })
             */
-            player.api("play");
+            player.api("play", "PLAYING");
 
         })();
     </script>
