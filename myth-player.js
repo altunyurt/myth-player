@@ -141,40 +141,30 @@ var mythPlayer = function (selectorId, options, sources) {
         };
 
         self.getApi= function (mediaElement) {
-            return {
-                play: function () {
-                    mediaElement.play();
-                    return self.vm.state("PLAY");
+            self.mediaElement = mediaElement;
+            return function(method, args, state){
+                args = Array.prototype.indexOf.call([null, undefined], args) != -1? undefined: args;
+                var retval = self.mediaElement[method](args);
+                if(state){
+                    self.vm.state(state);
                 }
-                ,pause: function () {
-                    mediaElement.pause();
-                    return self.vm.state("PAUSE");
-                }
-                ,load: function () {
-                    mediaElement.load();
-                    return self.vm.state("LOAD");
-                }
-            };
+                return retval;
+            }
         };
 
-        // self.setOptions = function (customOptions) {
-        //     var userConfigFunction = customOptions.config
-        //         ,options = mythTools.extend(self.vm.options(), customOptions);
-
-        //     options.config = function (mediaElement, isInitialized, context) {
-        //         if(userConfigFunction !== null && userConfigFunction !== undefined) {
-        //             userConfigFunction(mediaElement, isInitialized, context);
-        //         };
-        //         if (!self.api) {
-        //             self.api = self.getApi(mediaElement);
-        //         }
-        //         console.log("1");
-        //         self.api.load();
-        //         console.log("2", self.api);
-        //     };
-
-        //     self.vm.options(options);
-        // };
+            //     play: function () {
+            //         mediaElement.play();
+            //         return self.vm.state("PLAY");
+            //     }
+            //     ,pause: function () {
+            //         mediaElement.pause();
+            //         return self.vm.state("PAUSE");
+            //     }
+            //     ,load: function () {
+            //         mediaElement.load();
+            //         return self.vm.state("LOAD");
+            //     }
+            // };
 
         self.setSources = function (sources) {
             m.startComputation();
@@ -183,11 +173,9 @@ var mythPlayer = function (selectorId, options, sources) {
         };
 
         self.controller = function () {
-            // self.vm.init();
         };
 
         self.view = function (ctrl) {
-            // console.log("la");
             var vmSources = self.vm.sources(),
                 vmOptions = self.vm.options();
 
@@ -196,16 +184,16 @@ var mythPlayer = function (selectorId, options, sources) {
                     return
                 }
                 if (!self.api) {
-                    self.api = self.getApi(mediaElement)
+                    self.api = self.getApi(mediaElement);
                 }
-                self.api.load()
+                self.api("load");
             };
 
             var video = m("video", vmOptions, [
-                          Object.keys(vmSources).map(function (key, idx) {
-                            return m("source", {type: "video/" + key, src: vmSources[key] });
-                        })
-                          ])
+                            Object.keys(vmSources).map(function (key, idx) {
+                                return m("source", {type: "video/" + key, src: vmSources[key] });
+                            })
+                        ])
             return [video]
         };
 
