@@ -144,7 +144,7 @@ var mythPlayer = function (selectorId, options, sources) {
             self.mediaElement = mediaElement;
             return function(method, args, state){
                 args = Array.prototype.indexOf.call([null, undefined], args) != -1? undefined: args;
-                var retval = self.mediaElement[method](args);
+                var retval = mediaElement[method].apply(mediaElement, args);
                 if(state){
                     self.vm.state(state);
                 }
