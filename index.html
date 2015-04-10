@@ -11,13 +11,15 @@
     <script type="text/javascript">
         (function(){
 
-            var player = mythPlayer("videoContainer");
-
-            player.setSources({
+             player = mythPlayer("videoContainer", {}, {
                 mp4: "http://media.w3.org/2010/05/sintel/trailer.mp4"
-            })
+            });
+
+            // player.setSources({
+            //     mp4: "http://media.w3.org/2010/05/sintel/trailer.mp4"
+            // })
             // api is not exposed yet
-            // player.api.play();
+            player.api.play();
 
         })();
     </script>
