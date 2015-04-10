@@ -39,7 +39,7 @@ An object consisting of attributes for the media element. Please have a look at 
 
 ##### sources
 
-Sources for the media player. Sources can either be provided at the initilasation or set later by player.setSources. Please see the example.
+Sources for the media player. Sources can either be provided at the initialization or set later by player.setSources. Please see the example.
 
 
 
