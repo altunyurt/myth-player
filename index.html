@@ -5,20 +5,16 @@
 
 </head>
 <body>
-    <div id="videoContainer">
-
-
-    </div>
+    <div id="videoContainer"> </div>
     <script src="mithril.js"></script>
     <script type="text/javascript" src="myth-player.js"> </script>
     <script type="text/javascript">
         (function(){
 
-             player = mythPlayer("videoContainer", {}, {
+             var player = mythPlayer("videoContainer", {}, {
                 mp4: "http://media.w3.org/2010/05/sintel/trailer.mp4"
-            });
-
-            player.api("play");
+             });
+             player.api("play");
         })();
     </script>
 
