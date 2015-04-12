@@ -1,17 +1,13 @@
 # myth-player
-A mihtril.js html5 video player
-
 Myth player is a simple html5 video player depending on mythril.js.
 
 ### API
 
 The media element can be accessed via *player.mediaElement* directly. 
 
-*api(methodName, argsArray, state)* method enables calling the media element's methods and setting custom state afterwards, such as: 
+*api(methodName, arg)* method enables calling the media element's methods, such as: 
 
 ```
-   player.api("load", null_or_undefined, "LOADED");
-   or 
    player.api("load");
 ```
 
@@ -47,9 +43,7 @@ An object consisting of attributes for the media element. Please have a look at 
 
 Sources for the media player. Sources can either be provided at the initialization or set later by player.setSources. Please see the example.
 
-
-
-Example:
+####### Example:
 ```
       <script type="text/javascript">
         (function(){
@@ -64,7 +58,7 @@ Example:
                      webm: "..."
                 })
             */
-            player.api("play", null, "PLAYING");
+            player.api("play");
 
         })();
     </script>
