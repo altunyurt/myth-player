@@ -38,6 +38,7 @@ var mythPlayer = function (selectorId, options, sources) {
             autoplay: false
             ,preload: "auto"
             ,controls: false
+            ,plugins: []
         };
 
         self.vm = {
@@ -93,8 +94,12 @@ var mythPlayer = function (selectorId, options, sources) {
                             Object.keys(vmSources).map(function (key, idx) {
                                 return m("source", {type: "video/" + key, src: vmSources[key] });
                             })
-                        ])
-            return video
+                        ]),
+                views = [video];
+            vmOptions.plugins.map(function(plugin){
+                views.push(plugin.view(plugin.controller, self))
+            })
+            return views
         };
 
         m.module(document.getElementById(selectorId), self)
